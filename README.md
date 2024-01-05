@@ -29,6 +29,29 @@ docker run -it -d -p 8080:80 --name <containerName> <imageName>
 
 ## Step 2 - Docker compose
 
+File *docker-compose.yml* explained :
+```
+version: '3.8'
+
+services:
+
+static-web-site:
+    build: ./staticWebSite
+    image: http/site
+    ports:
+        - "8081:80"
+```
+
+Commands to use for demo :
+```
+# to build the infrastructure
+docker compose build
+# to run the infrastructure
+docker compose up
+# to stop the infrastructure
+docker compose down
+```
+
 ## Step 3 - HTTP API server
 
 ## Step 4 - Reverse proxy with Traefik
