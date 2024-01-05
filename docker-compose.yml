@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+
+  static-web-site:
+    build: ./staticWebSite
+    image: http/site
+    ports:
+      - "8081:80"
