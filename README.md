@@ -52,7 +52,13 @@ docker compose up
 docker compose down
 ```
 
+
 ## Step 3 - HTTP API server
+
+It's a basic API which manages quotes (content and author).
+There isn't a database, but a list of quotes is stored in the QuoteController class.
+This class has the following methods to handle the requests : getOne, getAll, create, delete and update (these all take a Javalin Context as a parameter).
+
 
 ## Step 4 - Reverse proxy with Traefik
 
