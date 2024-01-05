@@ -1,8 +1,8 @@
-package code;
+package dai.http.api;
 
 public class Quote {
-    String quote = "";
-    String author = "";
+    public String quote = "";
+    public String author = "";
 
     public Quote() {
     }

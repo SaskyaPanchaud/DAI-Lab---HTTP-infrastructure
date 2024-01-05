@@ -1,12 +1,15 @@
-package code;
+package dai.http.api;
 
 import java.util.concurrent.ConcurrentHashMap;
-
 import io.javalin.http.Context;
 
 public class QuoteController {
     private ConcurrentHashMap<Integer, Quote> quotes = new ConcurrentHashMap<>();
-    private int lastId = 0;
+    private int nextId = 0;
+
+    private void addQuote(Quote quote) {
+        quotes.put(nextId++, quote);
+    }
 
     public QuoteController() {
         addQuote(new Quote("Gandhi", "La vie est un mystère qu'il faut vivre, et non un problème à résoudre."));
@@ -61,9 +64,5 @@ public class QuoteController {
         Quote quote = ctx.bodyAsClass(Quote.class);
         quotes.put(id, quote);
         ctx.status(200);
-    }
-
-    private void addQuote(Quote quote) {
-        quotes.put(nextId++, quote);
     }
 }

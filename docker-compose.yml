@@ -7,3 +7,9 @@ services:
     image: http/site
     ports:
       - "8081:80"
+
+  http-api-server:
+    build: ./httpApiServer
+    image: http/api
+    ports:
+      - "8082:12345"
