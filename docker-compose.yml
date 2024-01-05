@@ -5,11 +5,24 @@ services:
   static-web-site:
     build: ./staticWebSite
     image: http/site
-    ports:
-      - "8081:80"
+    labels:
+      - traefik.http.routers.static-web-site.rule=Host("localhost")
 
   http-api-server:
     build: ./httpApiServer
     image: http/api
+    labels:
+      - traefik.http.routers.http-api-server.rule=Host("localhost") && PathPrefix("/api")
+
+  reverse_proxy:
+    image: traefik:v2.10
+    command: --api.insecure=true --providers.docker
     ports:
-      - "8082:12345"
+      # static-web-site
+      - "80:80"
+      # http-api-server
+      - "8080:8080" # 12345
+      # dashboard ?
+    volumes:
+      # Traefik connait ainsi la liste des containers
+      - /var/run/docker.sock:/var/run/docker.sock
