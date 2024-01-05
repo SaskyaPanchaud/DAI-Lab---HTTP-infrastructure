@@ -49,8 +49,8 @@ Create a GitHub repository for your project. You will use this repository to col
 
 ### Acceptance criteria
 
-- [X] You have created a GitHub repository for your project.
-- [X] The respository contains a Readme file that you will use to document your project.
+- [ ] You have created a GitHub repository for your project.
+- [ ] The respository contains a Readme file that you will use to document your project.
 
 
 Step 1: Static Web site
@@ -60,12 +60,12 @@ The goal of this step is to build a Docker image that contains a static HTTP ser
 
 ### Acceptance criteria
 
-- [X] You have created a separate folder in your respository for your static Web server.
-- [X] You have a Dockerfile based on the Nginx image. The Dockerfile copies the static site content into the image.
-- [X] You have configured the `nginx.conf` configuration file to serve the static content on a port (normally 80).
-- [X] You are able to explain the content of the `nginx.conf` file.
-- [X] You can run the image and access the static content from a browser.
-- [X] You have **documented** your configuration in your report.
+- [ ] You have created a separate folder in your respository for your static Web server.
+- [ ] You have a Dockerfile based on the Nginx image. The Dockerfile copies the static site content into the image.
+- [ ] You have configured the `nginx.conf` configuration file to serve the static content on a port (normally 80).
+- [ ] You are able to explain the content of the `nginx.conf` file.
+- [ ] You can run the image and access the static content from a browser.
+- [ ] You have **documented** your configuration in your report.
 
 
 Step 2: Docker compose
@@ -77,11 +77,11 @@ In addition to the basic docker compose configuration, we want to be able to reb
 
 ### Acceptance criteria
 
-- [X] You have added a docker compose configuration file to your GitHub repo.
-- [X] You can start and stop an infrastructure with a single static Web server using docker compose.
-- [X] You can access the Web server on your local machine on the respective port.
-- [X] You can rebuild the docker image with `docker compose build`
-- [X] You have **documented** your configuration in your report.
+- [ ] You have added a docker compose configuration file to your GitHub repo.
+- [ ] You can start and stop an infrastructure with a single static Web server using docker compose.
+- [ ] You can access the Web server on your local machine on the respective port.
+- [ ] You can rebuild the docker image with `docker compose build`
+- [ ] You have **documented** your configuration in your report.
 
 
 Step 3: HTTP API server
@@ -105,13 +105,13 @@ Once you're finished with the implementation, create a Dockerfile for the API se
 
 ### Acceptance criteria
 
-- [X] Your API supports all CRUD operations.
-- [X] You are able to explain your implementation and walk us through the code.
-- [X] You can start and stop the API server using docker compose.
-- [X] You can access both the API and the static server from your browser.
-- [X] You can rebuild the docker image with docker compose.
-- [X] You can do demo where use an API testing tool to show that all CRUD operations work.
-- [X] You have **documented** your implementation in your report.
+- [ ] Your API supports all CRUD operations.
+- [ ] You are able to explain your implementation and walk us through the code.
+- [ ] You can start and stop the API server using docker compose.
+- [ ] You can access both the API and the static server from your browser.
+- [ ] You can rebuild the docker image with docker compose.
+- [ ] You can do demo where use an API testing tool to show that all CRUD operations work.
+- [ ] You have **documented** your implementation in your report.
 
 
 Step 4: Reverse proxy with Traefik
@@ -134,12 +134,12 @@ The steps to follow for this section are thus:
 
 ### Acceptance criteria
 
-- [X] You can do a demo where you start from an "empty" Docker environment (no container running) and using docker compose you can start your infrastructure with 3 containers: static server, dynamic server and reverse proxy
-- [X] In the demo you can access each server from the browser in the demo. You can prove that the routing is done correctly through the reverse proxy.
-- [X] You are able to explain in the documentation how you have implemented the solution and walk us through the configuration and the code.
-- [X] You are able to explain in the documentation why a reverse proxy is useful to improve the security of the infrastructure.
-- [X] You are able to explain in the documentation how to access the dashboard of Traefik and how it works.
-- [X] You have **documented** your configuration in your report.
+- [ ] You can do a demo where you start from an "empty" Docker environment (no container running) and using docker compose you can start your infrastructure with 3 containers: static server, dynamic server and reverse proxy
+- [ ] In the demo you can access each server from the browser in the demo. You can prove that the routing is done correctly through the reverse proxy.
+- [ ] You are able to explain in the documentation how you have implemented the solution and walk us through the configuration and the code.
+- [ ] You are able to explain in the documentation why a reverse proxy is useful to improve the security of the infrastructure.
+- [ ] You are able to explain in the documentation how to access the dashboard of Traefik and how it works.
+- [ ] You have **documented** your configuration in your report.
 
 
 Step 5: Scalability and load balancing
