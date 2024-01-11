@@ -1,7 +1,8 @@
 # image de base avec java directement installe
 FROM openjdk:21
 # pour utiliser un reverse-proxy
-EXPOSE 80 # 12345
+# 12345
+EXPOSE 80
 WORKDIR /api
 # fichier .jar copie dans l'image
 COPY ./target/api.jar /api

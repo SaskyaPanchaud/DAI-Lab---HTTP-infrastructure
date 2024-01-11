@@ -8,6 +8,8 @@ services:
   static-web-site:
     build: ./staticWebSite
     image: http/site
+    deploy:
+      replicas: 2
     labels:
       - traefik.http.routers.static-web-site.rule=Host("localhost")
 
@@ -16,6 +18,8 @@ services:
     image: http/api
     #expose:
     #  - 12345
+    deploy:
+      replicas: 3
     labels:
       - traefik.http.routers.http-api-server.rule=Host("localhost") && PathPrefix("/api")
       #- traefik.http.services.http-api-server.loadbalancer.server.port=12345

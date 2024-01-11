@@ -109,6 +109,19 @@ The Traefik dashboard is accessed on port 8080. It works because we add *command
 
 ## Step 5 - Scalability and load balancing
 
+To start the infrastructure with several instances of each server (static and dynamic), we add this lines (in this case, there will be 2 instances) :
+```
+    deploy:
+      replicas: 2
+```
+To do it dynamic, we have used this command :
+```
+# one service
+docker compose up --scale <service>=<nb instance>
+# several services
+docker service scale <service>=<nb instance> <service>=<nb instance>
+```
+
 ## Step 6 - Load balancing with round-robin and sticky sessions
 
 ## Step 7 - Securing Traefik with HTTPS
