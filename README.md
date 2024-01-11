@@ -121,6 +121,7 @@ docker compose up --scale <service>=<nb instance>
 # several services
 docker service scale <service>=<nb instance> <service>=<nb instance>
 ```
+Logs show that Traefik performs load balancing among the instances (but for api ?).
 
 ## Step 6 - Load balancing with round-robin and sticky sessions
 
