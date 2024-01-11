@@ -45,6 +45,7 @@ public class QuoteController {
 
     public void getAll(Context ctx) {
         ctx.json(quotes);
+        System.out.println("-- NEW REQUEST --");
     }
 
     public void create(Context ctx) {

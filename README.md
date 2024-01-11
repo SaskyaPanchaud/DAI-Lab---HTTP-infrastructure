@@ -125,4 +125,11 @@ Logs show that Traefik performs load balancing among the instances (but for api 
 
 ## Step 6 - Load balancing with round-robin and sticky sessions
 
+We add this line for the api service :
+```
+ - traefik.http.services.api.loadbalancer.sticky.cookie=true
+```
+
+To validate this step, we add *System.out.println("-- NEW REQUEST --");* in QuoteController.getAll() to see in the logs which instance is called.
+
 ## Step 7 - Securing Traefik with HTTPS

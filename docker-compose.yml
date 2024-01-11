@@ -23,6 +23,7 @@ services:
     labels:
       - traefik.http.routers.http-api-server.rule=Host("localhost") && PathPrefix("/api")
       #- traefik.http.services.http-api-server.loadbalancer.server.port=12345
+      - traefik.http.services.api.loadbalancer.sticky.cookie=true
 
   # plus besoin des instructions ports ailleurs car que reverse-proxy qui est expose
   reverse-proxy:
