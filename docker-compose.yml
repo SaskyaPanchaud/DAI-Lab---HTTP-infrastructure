@@ -1,7 +1,10 @@
 version: '3.8'
 
-services:
+networks:
+  traefik:
+    name: traefik
 
+services:
   static-web-site:
     build: ./staticWebSite
     image: http/site
@@ -11,19 +14,21 @@ services:
   http-api-server:
     build: ./httpApiServer
     image: http/api
+    #expose:
+    #  - 12345
     labels:
       - traefik.http.routers.http-api-server.rule=Host("localhost") && PathPrefix("/api")
-      - traefik.http.services.http-api-server.loadbalancer.server.port=12345
+      #- traefik.http.services.http-api-server.loadbalancer.server.port=12345
 
-  reverse_proxy:
+  # plus besoin des instructions ports ailleurs car que reverse-proxy qui est expose
+  reverse-proxy:
     image: traefik:v2.10
     command: --api.insecure=true --providers.docker
     ports:
-      # static-web-site
-      - "80:80"
-      # http-api-server
-      - "8080:8080" # 12345
-      # dashboard ?
+      # flux principal et ensuite redirection a l'interne
+      - "80:80" # <port expose>:<port container>
+      # dashboard
+      - 8080:8080 # convention et oblige de noter sinon pas accessible
     volumes:
       # Traefik connait ainsi la liste des containers
       - /var/run/docker.sock:/var/run/docker.sock
