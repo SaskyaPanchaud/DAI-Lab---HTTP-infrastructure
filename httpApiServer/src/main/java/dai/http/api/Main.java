@@ -4,7 +4,8 @@ import io.javalin.*;
 
 public class Main {
     public static void main(String[] args) {
-        Javalin app = Javalin.create().start(12345);
+        //Javalin app = Javalin.create().start(12345);
+        Javalin app = Javalin.create().start(80);
 
         QuoteController quoteController = new QuoteController();
 

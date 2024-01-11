@@ -62,6 +62,51 @@ This class has the following methods to handle the requests : getOne, getAll, cr
 
 ## Step 4 - Reverse proxy with Traefik
 
+Configuration of *docker-compose.yml* :
+```
+version: '3.8'
+
+# add network
+networks:
+    traefik:
+        name: traefik
+
+services:
+    static-web-site:
+        build: ./staticWebSite
+        image: http/site
+        # add route for Traefik
+        labels:
+           - traefik.http.routers.static-web-site.rule=Host("localhost")
+
+    http-api-server:
+        build: ./httpApiServer
+        image: http/api
+        # add route for Traefik
+        labels:
+            - traefik.http.routers.http-api-server.rule=Host("localhost") && PathPrefix("/api")
+
+    # add reverse-proxy service
+    reverse-proxy:
+        image: traefik:v2.10
+        # accee to dashboard
+        command: --api.insecure=true --providers.docker
+        ports:
+            # api and static site web
+            - "80:80"
+            # dashboard
+            - 8080:8080
+        volumes:
+            # access to container's list
+            - /var/run/docker.sock:/var/run/docker.sock
+```
+
+Reverse proxy :
+A reverse proxy is useful to improve the security of the infrastructure because all querys go on it and after the reverse proxy redirects to the internal servers.
+
+Traefik Dashboard :
+The Traefik dashboard is accessed on port 8080. It works because we add *command: --api.insecure=true --providers.docker* in docker-compose file.
+
 ## Step 5 - Scalability and load balancing
 
 ## Step 6 - Load balancing with round-robin and sticky sessions
