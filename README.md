@@ -197,3 +197,9 @@ To access to this, go on http://localhost:9000 and enter :
     
  - user : admin
  - password : heigcoursdailabo.
+
+## Optional step 2: Integration API - static Web site
+
+We try to add *displayList()* in *scripts.js* but failed. The goal was to click on the button and all the quotes appear. Unfortunately, it doesn't work...
+
+This work hasn't been merge on the *main* branch but is on the *feature-link_api-website* branch.
