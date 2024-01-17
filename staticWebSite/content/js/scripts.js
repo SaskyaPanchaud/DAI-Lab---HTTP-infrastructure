@@ -1,16 +1,7 @@
-/*!
-* Start Bootstrap - Freelancer v7.0.7 (https://startbootstrap.com/theme/freelancer)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
-    var navbarShrink = function () {
+    let navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
         if (!navbarCollapsible) {
             return;
@@ -36,7 +27,7 @@ window.addEventListener('DOMContentLoaded', event => {
             target: '#mainNav',
             rootMargin: '0px 0px -40%',
         });
-    };
+    }
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
@@ -50,5 +41,28 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-
 });
+
+function displayList() {
+    // FIXME : fetch = appel HTTP (et si sans parametre alors get)
+    fetch('http://localhost/api/quotes')
+        .then(function (response) {
+            // The API call was successful !
+            return response.json();
+        })
+        .then(function (data) {
+            // This is the JSON from our response
+            let div = document.getElementById("listQuotes");
+            div.innerHTML = "";
+            for (let i in data) {
+                let span = document.createElement("span");
+                span.textContent = "\"" + data[i].quote + "\", " + data[i].author;
+                div.append(span);
+                div.append(document.createElement("br"));
+            }
+        })
+        .catch(function (err) {
+            //There was an error
+            console.warn('Something went wrong.', err);
+        });
+}

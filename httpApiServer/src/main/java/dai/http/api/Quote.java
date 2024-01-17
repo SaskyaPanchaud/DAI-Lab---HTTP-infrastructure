@@ -1,15 +1,15 @@
 package dai.http.api;
 
 public class Quote {
-    public String quote = "";
     public String author = "";
+    public String quote = "";
 
     public Quote() {
     }
 
-    public Quote(String quote, String author) {
-        this.quote = quote;
+    public Quote(String author, String quote) {
         this.author = author;
+        this.quote = quote;
     }
 
     public String getQuote() {
