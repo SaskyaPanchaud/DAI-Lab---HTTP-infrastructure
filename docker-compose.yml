@@ -12,6 +12,8 @@ services:
       replicas: 2
     labels:
       - traefik.http.routers.static-web-site.rule=Host("localhost")
+      - traefik.http.routers.static-web-site.tls=true
+      - traefik.http.routers.static-web-site.entrypoints=https
 
   http-api-server:
     build: ./httpApiServer
@@ -24,6 +26,8 @@ services:
       - traefik.http.routers.http-api-server.rule=Host("localhost") && PathPrefix("/api")
       #- traefik.http.services.http-api-server.loadbalancer.server.port=12345
       - traefik.http.services.api.loadbalancer.sticky.cookie=true
+      - traefik.http.routers.http-api-server.tls=true
+      - traefik.http.routers.http-api-server.entrypoints=https
 
   # plus besoin des instructions ports ailleurs car que reverse-proxy qui est expose
   reverse-proxy:
@@ -32,8 +36,11 @@ services:
     ports:
       # flux principal et ensuite redirection a l'interne
       - "80:80" # <port expose>:<port container>
+      - "443:443"
       # dashboard
       - 8080:8080 # convention et oblige de noter sinon pas accessible
     volumes:
       # Traefik connait ainsi la liste des containers
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./certificates:/etc/traefik/certificates
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yaml
