@@ -165,3 +165,35 @@ We also had to change the following port forwarding to the traefik container:
 ```yaml
 - "443:443"
 ```
+
+## Optional step 1: Management UI
+
+We use *Portainer* to manage the containers of our infrastructure. We add this config to the docker-compose.yml :
+
+```
+# ajout de l'image portainer pour visualiser et gerer les ressources de Docker
+agent:
+image: portainer/agent
+volumes:
+- /var/run/docker.sock:/var/run/docker.sock
+- /var/lib/docker/volumes:/var/lib/docker/volumes
+
+portainer:
+image: portainer/portainer-ce
+command: -H tcp://agent:9001 --tlsskipverify
+ports:
+- "9000:9000"
+volumes:
+- /var/run/docker.sock:/var/run/docker.sock
+- portainer_data:/data
+depends_on:
+- agent
+
+volumes:
+portainer_data:
+```
+
+To access to this, go on http://localhost:9000 and enter :
+    
+ - user : admin
+ - password : heigcoursdailabo.
