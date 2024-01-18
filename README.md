@@ -61,7 +61,7 @@ It has the following public methods to handle the requests:
 
 These all take a Javalin `Context` as a parameter.
 
-Finally, our `Main` class takes care of creating the Javalin app, which listens on a port (12345 in our case). We then initialize the `QuoteController`, and binds it's methods to handle different
+Finally, our `Main` class takes care of creating the Javalin app, which listens on a port (80 in our case). We then initialize the `QuoteController`, and binds it's methods to handle different
 HTTP requests.
 
 ## Step 4 - Reverse proxy with Traefik
